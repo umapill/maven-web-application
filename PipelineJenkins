@@ -46,7 +46,7 @@ SlackNotification(currentBuild.result)
 //code  Snippet for sending slack notification
 def SlackNotification(String buildStatus = 'STARTED') {
   // build status of null means successful
-  buildStatus =  buildStatus ?: 'SUCCESSFUL'
+  buildStatus =  buildStatus ?: "SUCCESSFUL":"FAILURE"
 
   // Default values
   def colorName = 'RED'
