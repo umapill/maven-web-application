@@ -9,6 +9,7 @@ echo " jobe name is: ${env.JOB_NAME}"
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
 
 try{
+SlackNotification('STARTED')
 stage('CheckOutCode'){
 git credentialsId: 'a3090357-86ef-471a-9ca2-0a5f1523cf4e', url: 'https://github.com/Cohesity2022/maven-web-application.git'
 }
