@@ -36,7 +36,7 @@ SlackNotification(currentBuild.result)
 throw e
 }
 finally{
-SlackNotification(currentBuild.result
+SlackNotification(currentBuild.result)
 }
 
 }//Node closing
