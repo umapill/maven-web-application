@@ -1,0 +1,19 @@
+pipeline{
+
+agent any
+
+stages{
+stage('CheckOutCode'){
+steps{
+git credentialsId: 'a3090357-86ef-471a-9ca2-0a5f1523cf4e', url: 'https://github.com/Cohesity2022/maven-web-application.git'
+}
+}
+
+stage('build'){
+steps{
+sh "${MavenHome}/bin/mvn clean package"
+}
+}
+
+}//stage closing 
+}//pipeline closing
