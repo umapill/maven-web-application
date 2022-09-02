@@ -1,3 +1,5 @@
+/*
+
 pipeline{
 
 agent any
@@ -17,3 +19,4 @@ sh "${MavenHome}/bin/mvn clean package"
 
 }//stage closing 
 }//pipeline closing
+*/
