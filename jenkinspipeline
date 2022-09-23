@@ -1,0 +1,30 @@
+node {
+
+def MavenHome = tool name : "Maven3.8.6"
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
+echo "jenkins url is: ${env.JENKINS_URL}"
+echo "jenkis url is1: ${env.JENKINS_HOME}"
+
+
+stage('Checkout Code'){
+git credentialsId: 'db284ad2-65e6-405b-8ad3-cc055eefe3cc', url: 'https://github.com/Cohesity2022/maven-web-application.git'
+}
+stage('mvn build'){
+sh "${MavenHome}/bin/mvn clean package "
+}
+stage ('SonarQubeReport'){
+sh "${MavenHome}/bin/mvn sonar:sonar"
+}
+
+stage('NexusArtifactupload'){
+sh "${MavenHome}/bin/mvn clean deploy"
+}
+stage('deployaplicationinttomcat'){
+sshagent(['32cfcda7-5efb-4076-a461-721205f9f029']) {
+ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec-user@172.31.1.148:/opt/apache-tomcat-9.0.65/webapp "
+}
+
+}
+
+
+}
