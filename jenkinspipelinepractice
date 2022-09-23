@@ -12,6 +12,7 @@ git credentialsId: 'db284ad2-65e6-405b-8ad3-cc055eefe3cc', url: 'https://github.
 stage('mvn build'){
 sh "${MavenHome}/bin/mvn clean package "
 }
+/*
 stage ('SonarQubeReport'){
 sh "${MavenHome}/bin/mvn sonar:sonar"
 }
@@ -25,6 +26,7 @@ sshagent(['32cfcda7-5efb-4076-a461-721205f9f029']) {
 }
 
 }
+*/
 
 
 }
