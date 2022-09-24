@@ -46,7 +46,8 @@ notifyBuild(currentBuild.result)
 
 def notifyBuild(String buildStatus = 'STARTED') {
   // build status of null means successful
-  buildStatus =  buildStatus ?: 'SUCCESSFUL'
+  //buildStatus =  buildStatus ?: 'SUCCESSFUL'
+    buildStatus =  buildStatus ?: 'SUCCESSFUL' : 'FAILURE'
 
   // Default values
   def colorName = 'RED'
