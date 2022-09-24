@@ -33,7 +33,7 @@ sshagent(['32cfcda7-5efb-4076-a461-721205f9f029']) {
 } //try closing 
 //if error come below script will execute 
 catch(e){}
-notifyBuild(currentBuild.result)
+notifyBuild('FAILED')
 throw e
 finaly {
 notifyBuild(currentBuild.result)
