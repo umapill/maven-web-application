@@ -6,6 +6,9 @@ echo "jenkins url is: ${env.JENKINS_URL}"
 echo "jenkis url is1: ${env.JENKINS_HOME}"
 
 try{
+
+notifyBuild('STARTED ')
+
 stage('Checkout Code'){
 git credentialsId: 'db284ad2-65e6-405b-8ad3-cc055eefe3cc', url: 'https://github.com/Cohesity2022/maven-web-application.git'
 }
